@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Multi-Sport AI Planner</title>
@@ -7,11 +7,19 @@
 <body>
     <h1 th:text="${appName}">Application Name</h1>
 
-    <h2>Workout Dashboard</h2>
+    <h2>Latest Workout</h2>
 
     <p>
-        Total Workouts:
-        <span th:text="${totalWorkouts}">0</span>
+        Sport:
+        <span th:text="${workout.sport}">Sport</span>
+    </p>
+    <p>
+        Distance:
+        <span th:text="${workout.distance}">0</span> km
+    </p>
+    <p>
+        Duration:
+        <span th:text="${workout.duration}">0</span> minutes
     </p>
 </body>
 </html>
