@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout History</title>
+</head>
+<body>
+
+<h1>Workout History</h1>
+
+<a th:href="@{/workouts/new}">Add Workout</a>
+
+<ul>
+  <li th:each="workout : ${workouts}">
+    <span th:text="${workout.sport}">Sport</span> -
+    <span th:text="${workout.distance}">0</span> km -
+    <span th:text="${workout.duration}">0</span> min
+  </li>
+</ul>
+
+</body>
+</html>

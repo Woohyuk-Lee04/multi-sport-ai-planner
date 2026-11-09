@@ -21,5 +21,20 @@ public class Workout {
     public int getDuration() {
         return duration;
     }
+
+    public Workout() {
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }
 
