@@ -1,23 +1,26 @@
 package com.multisport.planner.controller;
 
 import com.multisport.planner.model.Workout;
+import com.multisport.planner.service.WorkoutService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class WorkoutController {
 
-    private final List<Workout> workouts = new ArrayList<>();
+    private final WorkoutService workoutService;
+
+    public WorkoutController(WorkoutService workoutService) {
+        this.workoutService = workoutService;
+    }
 
     @GetMapping("/workouts")
     public String listWorkouts(Model model) {
-        model.addAttribute("workouts", workouts);
+        model.addAttribute("workouts", workoutService.getAllWorkouts());
+        model.addAttribute("workoutCount", workoutService.getWorkoutCount());
         return "workouts";
     }
 
@@ -29,7 +32,7 @@ public class WorkoutController {
 
     @PostMapping("/workouts")
     public String saveWorkout(@ModelAttribute Workout workout) {
-        workouts.add(workout);
+        workoutService.addWorkout(workout);
         return "redirect:/workouts";
     }
 
