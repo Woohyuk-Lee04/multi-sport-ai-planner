@@ -1,6 +1,14 @@
 package com.multisport.planner.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "workouts")
 public class Workout {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String sport;
     private double distance;
@@ -10,6 +18,10 @@ public class Workout {
         this.sport = sport;
         this.distance = distance;
         this.duration = duration;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getSport() {

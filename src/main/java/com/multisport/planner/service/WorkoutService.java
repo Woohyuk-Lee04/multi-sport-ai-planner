@@ -1,25 +1,34 @@
 package com.multisport.planner.service;
 
 import com.multisport.planner.model.Workout;
+import com.multisport.planner.repository.WorkoutRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkoutService {
 
-    private final List<Workout> workouts = new ArrayList<>();
+    private final WorkoutRepository workoutRepository;
+
+    public WorkoutService(WorkoutRepository workoutRepository) {
+        this.workoutRepository = workoutRepository;
+    }
 
     public List<Workout> getAllWorkouts() {
-        return new ArrayList<>(workouts);
+        return workoutRepository.findAll();
     }
 
     public void addWorkout(Workout workout) {
-        workouts.add(workout);
+        workoutRepository.save(workout);
     }
 
-    public int getWorkoutCount() {
-        return workouts.size();
+    public long getWorkoutCount() {
+        return workoutRepository.count();
+    }
+
+    public Optional<Workout> getWorkoutById(Long id) {
+        return workoutRepository.findById((id);
     }
 }
