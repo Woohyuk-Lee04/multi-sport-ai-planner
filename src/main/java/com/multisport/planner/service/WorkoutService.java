@@ -29,6 +29,6 @@ public class WorkoutService {
     }
 
     public Optional<Workout> getWorkoutById(Long id) {
-        return workoutRepository.findById((id);
+        return workoutRepository.findById(id);
     }
 }
